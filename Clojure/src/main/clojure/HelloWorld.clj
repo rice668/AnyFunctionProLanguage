@@ -15,5 +15,3 @@
 
 ;;Sets
 (println #{:a :b :c})
-
-
