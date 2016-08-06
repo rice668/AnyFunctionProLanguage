@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit
+
 import akka.actor.{Props, ActorSystem, Actor}
 
 
@@ -13,7 +15,7 @@ object Main extends App {
   class HelloWorldPrinter extends Actor {
     override def receive = {
       case SayHello => println("Hello World")
-      case StopSystem => context.system.awaitTermination()
+      case StopSystem => context.system.awaitTermination(3, TimeUnit.SECONDS)
       case _ => println("Unknown message")
     }
   }

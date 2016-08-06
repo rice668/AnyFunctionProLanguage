@@ -1,5 +1,10 @@
 
 
+(defn bar
+  [a b]
+  (+ a b))
+
+(println(bar 4 5))
 
 ;; FUCK THE WORLD and YOU
 (println "FUCK YOU THE WORLD!")
