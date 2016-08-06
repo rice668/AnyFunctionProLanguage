@@ -6,7 +6,11 @@
 
     <groupId>minglei</groupId>
     <artifactId>minglei</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>Erlang</module>
+    </modules>
 
 
 </project>
