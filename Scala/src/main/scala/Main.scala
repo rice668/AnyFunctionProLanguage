@@ -5,17 +5,20 @@ import akka.actor.{Props, ActorSystem, Actor}
 
 object Main extends App {
 
-  // While it is possible to pass any object to Actor , it is a good
-  // a practice to use case classes/case objects for each type of a
-  // message.
+  // it is a good a practice to use case classes/case objects for each type of a message.
+  // 非常重要，在Spark的源码里面，大量使用了 case class / case object
+  // 【org.apache.spark.deploy.DeployMessages】
 
-  case object SayHello
-  case object StopSystem
+  case class SayHello(message: String) {}
+
+  case class StopSystem(port: Int) {
+    assert(port > 0)
+  }
 
   class HelloWorldPrinter extends Actor {
     override def receive = {
       case SayHello => println("Hello World")
-      case StopSystem => context.system.awaitTermination(3, TimeUnit.SECONDS)
+      case StopSystem => context.system.shutdown()
       case _ => println("Unknown message")
     }
   }
@@ -24,6 +27,6 @@ object Main extends App {
   val helloWorldPrinter = system.actorOf(Props[HelloWorldPrinter])
   helloWorldPrinter ! SayHello
   helloWorldPrinter ! "another message"
-  helloWorldPrinter ! StopSystem
+  helloWorldPrinter ! StopSystem(1)
 
 }

@@ -12,10 +12,4 @@ object ForComprehension extends App {
 
   val dogBreeds = List("Bdsc", "sdcds", "IOOPSA", "csdcuiw")
 
-  val filteredBreeds = for {
-    breed <- dogBreeds
-    if breed.contains("csdcuiw")
-  } yield filteredBreeds
-  filteredBreeds.foreach(print)
-
 }

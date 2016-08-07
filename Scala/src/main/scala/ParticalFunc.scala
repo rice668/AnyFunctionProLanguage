@@ -1,6 +1,7 @@
 /**
   * Created by root on 16-8-6.
   */
+
 object ParticalFunc extends App {
 
   case class UnregisterApplication(appId: String)
